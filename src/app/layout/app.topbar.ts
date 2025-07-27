@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, ButtonModule, StyleClassModule, LayoutConfig],
   template: `
-    <div class="bg-surface-0 dark:bg-surface-900 mx-auto w-full p-3 sticky top-0 z-50">
+    <div class="bg-surface-0 dark:bg-surface-900 mx-auto w-full p-2 sticky top-0 z-50">
       <div class="flex justify-between items-center">
         <div class="flex gap-3 items-center">
           <svg
@@ -94,10 +94,9 @@ import { CommonModule } from '@angular/common';
           </svg>
           <span class="hidden sm:flex flex-col"
             ><span class="text-xl font-light text-surface-700 dark:text-surface-100 leading-none"
-              >PrimeNG Examples</span
+              >Project Name</span
             >
-            <span class="text-sm font-medium text-primary leading-tight">Tailwindcss v4</span></span
-          >
+          </span>
         </div>
         <div class="flex items-center gap-2">
           <button
