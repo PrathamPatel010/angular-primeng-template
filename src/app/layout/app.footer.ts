@@ -1,16 +1,14 @@
-import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: "app-footer",
+  selector: 'app-footer',
   standalone: true,
   imports: [CommonModule],
   template: `
     <div class="bg-surface-0 dark:bg-surface-900 p-3 mx-auto w-full">
       <div class="flex justify-between items-center sm:flex-row flex-col gap-2">
-        <div class="text-sm text-surface-600 dark:text-surface-400">
-          202X PrimeNG.
-        </div>
+        <div class="text-sm text-surface-600 dark:text-surface-400">202X PrimeNG.</div>
         <div class="flex gap-4">
           <a
             href="https://twitter.com/prime_ng"

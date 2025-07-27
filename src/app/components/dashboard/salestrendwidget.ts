@@ -1,11 +1,11 @@
-import { Component, inject } from "@angular/core";
-import { ChartModule } from "primeng/chart";
-import { CommonModule } from "@angular/common";
-import { LayoutService } from "../../layout/layout.service";
-import { debounceTime, Subscription } from "rxjs";
+import { Component, inject } from '@angular/core';
+import { ChartModule } from 'primeng/chart';
+import { CommonModule } from '@angular/common';
+import { LayoutService } from '../../layout/layout.service';
+import { debounceTime, Subscription } from 'rxjs';
 
 @Component({
-  selector: "sales-trend-widget",
+  selector: 'sales-trend-widget',
   standalone: true,
   imports: [CommonModule, ChartModule],
   template: `
@@ -16,12 +16,7 @@ import { debounceTime, Subscription } from "rxjs";
         <div class="flex items-center justify-between">
           <span class="font-medium text-base">Sales Trend</span>
         </div>
-        <p-chart
-          type="bar"
-          height="300px"
-          [data]="chartData"
-          [options]="chartOptions"
-        />
+        <p-chart type="bar" height="300px" [data]="chartData" [options]="chartOptions" />
       </div>
     </div>
   `,
@@ -35,19 +30,17 @@ export class SalesTrendWidget {
 
   chartOptions: any;
 
-  selectedRevenueMonth: any = { name: "January - July 2021", code: "0" };
+  selectedRevenueMonth: any = { name: 'January - July 2021', code: '0' };
 
   revenueMonth: any = [
-    { name: "January - July 2021", code: "0" },
-    { name: "August - December 2020", code: "1" },
+    { name: 'January - July 2021', code: '0' },
+    { name: 'August - December 2020', code: '1' },
   ];
 
   constructor() {
-    this.subscription = this.layoutService.appStateUpdate$
-      .pipe(debounceTime(25))
-      .subscribe(() => {
-        this.initChart();
-      });
+    this.subscription = this.layoutService.appStateUpdate$.pipe(debounceTime(25)).subscribe(() => {
+      this.initChart();
+    });
   }
 
   ngOnInit() {
@@ -56,29 +49,29 @@ export class SalesTrendWidget {
 
   initChart() {
     const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue("--text-color");
+    const textColor = documentStyle.getPropertyValue('--text-color');
 
     this.chartData = {
-      labels: ["Q1", "Q2", "Q3", "Q4"],
+      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
       datasets: [
         {
-          type: "bar",
-          label: "Subscriptions",
-          backgroundColor: documentStyle.getPropertyValue("--p-primary-400"),
+          type: 'bar',
+          label: 'Subscriptions',
+          backgroundColor: documentStyle.getPropertyValue('--p-primary-400'),
           data: [4000, 10000, 15000, 4000],
           barThickness: 32,
         },
         {
-          type: "bar",
-          label: "Advertising",
-          backgroundColor: documentStyle.getPropertyValue("--p-primary-300"),
+          type: 'bar',
+          label: 'Advertising',
+          backgroundColor: documentStyle.getPropertyValue('--p-primary-300'),
           data: [2100, 8400, 2400, 7500],
           barThickness: 32,
         },
         {
-          type: "bar",
-          label: "Affiliate",
-          backgroundColor: documentStyle.getPropertyValue("--p-primary-200"),
+          type: 'bar',
+          label: 'Affiliate',
+          backgroundColor: documentStyle.getPropertyValue('--p-primary-200'),
           data: [4100, 5200, 3400, 7400],
           borderRadius: {
             topLeft: 8,
@@ -94,22 +87,22 @@ export class SalesTrendWidget {
       responsive: true,
       plugins: {
         legend: {
-          position: "top",
+          position: 'top',
         },
       },
       scales: {
         x: {
           stacked: true,
           grid: {
-            color: "transparent",
-            borderColor: "transparent",
+            color: 'transparent',
+            borderColor: 'transparent',
           },
         },
         y: {
           stacked: true,
           grid: {
-            color: "transparent",
-            borderColor: "transparent",
+            color: 'transparent',
+            borderColor: 'transparent',
             drawTicks: false,
           },
         },
@@ -131,16 +124,16 @@ export class SalesTrendWidget {
       [21, 7, 13, 3, 19, 11, 6],
     ];
 
-    if (event.value.code === "1") {
-      this.chartData.datasets[0].data = dataSet2[parseInt("0")];
-      this.chartData.datasets[1].data = dataSet2[parseInt("1")];
-      this.chartData.datasets[2].data = dataSet2[parseInt("2")];
-      this.chartData.datasets[3].data = dataSet2[parseInt("3")];
+    if (event.value.code === '1') {
+      this.chartData.datasets[0].data = dataSet2[parseInt('0')];
+      this.chartData.datasets[1].data = dataSet2[parseInt('1')];
+      this.chartData.datasets[2].data = dataSet2[parseInt('2')];
+      this.chartData.datasets[3].data = dataSet2[parseInt('3')];
     } else {
-      this.chartData.datasets[0].data = dataSet1[parseInt("0")];
-      this.chartData.datasets[1].data = dataSet1[parseInt("1")];
-      this.chartData.datasets[2].data = dataSet1[parseInt("2")];
-      this.chartData.datasets[3].data = dataSet1[parseInt("3")];
+      this.chartData.datasets[0].data = dataSet1[parseInt('0')];
+      this.chartData.datasets[1].data = dataSet1[parseInt('1')];
+      this.chartData.datasets[2].data = dataSet1[parseInt('2')];
+      this.chartData.datasets[3].data = dataSet1[parseInt('3')];
     }
   }
 
